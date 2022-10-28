@@ -57,10 +57,25 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `version` bigint(20) NOT NULL,
   `name` VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8mb3_unicode_ci',
+  `some_flag` BIT(1) NULL DEFAULT NULL,
+  `cust_address_address1` VARCHAR(160) NULL DEFAULT NULL COLLATE 'utf8mb3_unicode_ci',
+  `cust_address_address2` VARCHAR(160) NULL DEFAULT NULL COLLATE 'utf8mb3_unicode_ci',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=197 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 -- Data exporting was unselected.
+
+CREATE TABLE `embedded_address` (
+                                    `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+                                    `version` BIGINT(20) NOT NULL,
+                                    `address1` VARCHAR(255) DEFAULT NULL COLLATE 'utf8mb3_general_ci',
+                                    `address2` VARCHAR(255) DEFAULT NULL COLLATE 'utf8mb3_general_ci',
+                                    PRIMARY KEY (`id`) USING BTREE
+)
+    COLLATE='utf8mb3_general_ci'
+    ENGINE=InnoDB
+;
+
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
